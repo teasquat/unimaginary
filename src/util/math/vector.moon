@@ -12,8 +12,8 @@ class Vector
 
         for i = 1, #other.content / other.cols
           p = 0
-          for n = 0, other.cols
-            p += other.content[(i * other.cols) + n] + @content[n]
+          for n = 1, other.cols
+            p += other.content[(i * other.cols) + n - 2] + @content[n]
 
           pass[#pass + 1] = p
 
@@ -29,8 +29,8 @@ class Vector
 
         for i = 1, #other.content / other.cols
           p = 0
-          for n = 0, other.cols
-            p += other.content[(i * other.cols) + n] + @content[n]
+          for n = 1, other.cols
+            p += other.content[(i * other.cols) + n - 2] - @content[n]
 
           pass[#pass + 1] = p
 
@@ -46,8 +46,8 @@ class Vector
 
         for i = 1, #other.content / other.cols
           p = 0
-          for n = 0, other.cols
-            p += other.content[(i * other.cols) + n] + @content[n]
+          for n = 1, other.cols
+            p += other.content[(i * other.cols) + n - 2] * @content[n]
 
           pass[#pass + 1] = p
 
@@ -64,8 +64,8 @@ class Vector
 
         for i = 1, #other.content / other.cols
           p = 0
-          for n = 0, other.cols
-            p += other.content[(i * other.cols) + n] + @content[n]
+          for n = 1, other.cols
+            p += other.content[(i * other.cols) + n - 2] / @content[n]
 
           pass[#pass + 1] = p
 
