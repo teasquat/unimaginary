@@ -1,0 +1,22 @@
+varying vec3 vpos;
+varying vec3 normal;
+uniform vec3 lightdir;
+
+vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
+    vec3 a = normalize(lightdir);
+    vec3 b = normal;
+
+    float dot = (a.x*b.x + a.y*b.y + a.z*b.z);
+
+    vec4 texturecolor = Texel(texture, texture_coords);
+
+    number angle = dot;
+
+    number dtl = angle+1;
+
+    color.r -= dtl;
+    color.g -= dtl;
+    color.b -= dtl;
+
+    return texturecolor * color;
+}

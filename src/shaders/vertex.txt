@@ -1,0 +1,21 @@
+varying vec3 vpos;
+varying vec3 normal;
+
+uniform vec3 v1;
+uniform vec3 v2;
+uniform vec3 v3;
+
+uniform float z;
+
+vec4 position(mat4 transform_projection, vec4 vertex_position)
+{
+    vpos = vec3(vertex_position.x,vertex_position.y,vertex_position.z);
+
+    vec3 edge1 = v2 - v1;
+    vec3 edge2 = v3 - v2;
+
+    normal = normalize(cross(edge1,edge2));
+
+    // The order of operations matters when doing matrix multiplication.
+    return transform_projection * vertex_position;
+}
