@@ -15,3 +15,12 @@ print_tbl b.content
 c = a + b
 
 print_tbl c.content
+
+c = Vector {1, 1}
+m = Matrix 2, 2, 3
+
+print_tbl m.content.content
+
+d = m * c
+
+print_tbl d.content

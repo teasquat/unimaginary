@@ -1,22 +1,23 @@
 class Matrix
   new: (@rows, @cols, d) =>
 
-    @content = Vector content or [d for i = 1, @rows * @cols]
+    @content = Vector [d for i = 1, @rows * @cols]
     @type    = "matrix"
 
   __add: (other) =>
     switch other.type
       when "vector"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
-        for i = 1, #@content / @cols
+        for i = 1, #@content.content / @cols
           p = 0
-          for n = 0, @cols
-            p += @content[(i * @cols) + n] + other.content[n]
+          for n = 1, @cols
+            p += @content.content[(i * @cols) + n - 2] + other.content[n]
 
           pass[#pass + 1] = p
 
-        Vector pass
+        return Vector pass
 
       when "matrix"
         assert other.cols == @cols and other.rows == @rows, "Can't operate matrices of different dimensions!"
@@ -25,16 +26,17 @@ class Matrix
   __sub: (other) =>
     switch other.type
       when "vector"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
-        for i = 1, #@content / @cols
+        for i = 1, #@content.content / @cols
           p = 0
-          for n = 0, @cols
-            p -= @content[(i * @cols) + n] + other.content[n]
+          for n = 1, @cols
+            p += @content.content[(i * @cols) + n - 2] - other.content[n]
 
           pass[#pass + 1] = p
 
-        Vector pass
+        return Vector pass
 
       when "matrix"
         assert other.cols == @cols and other.rows == @rows, "Can't operate matrices of different dimensions!"
@@ -43,16 +45,17 @@ class Matrix
   __mul: (other) =>
     switch other.type
       when "vector"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
-        for i = 1, #@content / @cols
+        for i = 1, #@content.content / @cols
           p = 0
-          for n = 0, @cols
-            p *= @content[(i * @cols) + n] + other.content[n]
+          for n = 1, @cols
+            p += @content.content[(i * @cols) + n - 2] * other.content[n]
 
           pass[#pass + 1] = p
 
-        Vector pass
+        return Vector pass
 
       when "matrix"
         assert other.cols == @cols and other.rows == @rows, "Can't operate matrices of different dimensions!"
@@ -61,16 +64,17 @@ class Matrix
   __div: (other) =>
     switch other.type
       when "vector"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
-        for i = 1, #@content / @cols
+        for i = 1, #@content.content / @cols
           p = 0
-          for n = 0, @cols
-            p /= @content[(i * @cols) + n] + other.content[n]
+          for n = 1, @cols
+            p += @content.content[(i * @cols) + n - 2] / other.content[n]
 
           pass[#pass + 1] = p
 
-        Vector pass
+        return Vector pass
 
       when "matrix"
         assert other.cols == @cols and other.rows == @rows, "Can't operate matrices of different dimensions!"
