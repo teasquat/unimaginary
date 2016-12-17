@@ -6,7 +6,7 @@ class Vector
     switch other.type
       when "vector"
         assert #@content == #other.content, "Can't operate vectors of different dimensions!"
-        Vector [@content[i] - o for i, o in ipairs other.content]
+        Vector [@content[i] + o for i, o in ipairs other.content]
       when "matrix"
         pass = {}
 
