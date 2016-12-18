@@ -8,6 +8,7 @@ class Vector
         assert #@content == #other.content, "Can't operate vectors of different dimensions!"
         Vector [@content[i] + o for i, o in ipairs other.content]
       when "matrix"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
         for i = 1, #other.content / other.cols
@@ -25,6 +26,7 @@ class Vector
         assert #@content == #other.content, "Can't operate vectors of different dimensions!"
         Vector [@content[i] - o for i, o in ipairs other.content]
       when "matrix"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
         for i = 1, #other.content / other.cols
@@ -42,6 +44,7 @@ class Vector
         assert #@content == #other.content, "Can't operate vectors of different dimensions!"
         Vector [@content[i] * o for i, o in ipairs other.content]
       when "matrix"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
         for i = 1, #other.content / other.cols
@@ -60,6 +63,7 @@ class Vector
         Vector [@content[i] / o for i, o in ipairs other.content]
 
       when "matrix"
+        assert @cols == #other.content, "Can't operate vector and matrix with wrong dimensions!"
         pass = {}
 
         for i = 1, #other.content / other.cols
