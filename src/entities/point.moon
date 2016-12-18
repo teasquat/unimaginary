@@ -11,7 +11,7 @@ class Point
   ----------------------------------
   -- projecting point one dimension down
   ----------------------------------
-  projection_n1: =>
+  projection_n1: (a) =>
     prime = {}
 
     for i, v in ipairs @pos.content
@@ -24,8 +24,8 @@ class Point
   ----------------------------------
   -- getting projection in given plane
   ----------------------------------
-  get_n: (n, pos=@pos) =>
+  get_n: (n, pos=@pos, a) =>
     if #pos.content <= n
       return pos
     else
-      @get_n n, @projection_n1 pos
+      @get_n n, (@projection_n1 pos, a), a
